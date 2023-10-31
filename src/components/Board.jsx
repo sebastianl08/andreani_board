@@ -1,16 +1,19 @@
-import { useGetCardTree } from "@/services/CardService"
-
+import { useCheckStorage, useGetLists } from "@/services/CardService"
+import { useEffect } from 'react';
 import CardList from "@/components/CardList";
 
 export default function Board()
 {
-    const getCardTree = useGetCardTree();
+    const getLists = useGetLists();
+    const checkStorage = useCheckStorage();
+
+    useEffect(() => checkStorage, []);
 
     return (        
-        <div data-component='board' className='flex'>
+        <div className='flex'>
             {
-                getCardTree().map((x, i) => (
-                    <CardList title={x.board} items={x.cards} key={i} />
+                getLists().map((x, i) => (
+                    <CardList {...x} key={i} />
                 ))
             }
         </div>

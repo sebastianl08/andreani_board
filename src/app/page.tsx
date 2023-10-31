@@ -1,14 +1,14 @@
 "use client";
 
 import Board from '@/components/Board'
+import ToolBar from '@/components/ToolBar';
 import {CardServiceProvider} from '@/services/CardService';
 
 export default function Home() {
   return (
-    <main>
       <CardServiceProvider>
+        <ToolBar />
         <Board />
       </CardServiceProvider>
-    </main>
   )
 }
