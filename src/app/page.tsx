@@ -2,7 +2,7 @@
 
 import Board from '@/components/Board'
 import ToolBar from '@/components/ToolBar';
-import {CardServiceProvider} from '@/services/CardService';
+import {CardServiceProvider} from '@/services/CardServiceProvider';
 
 export default function Home() {
   return (

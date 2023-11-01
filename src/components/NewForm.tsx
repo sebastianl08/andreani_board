@@ -1,7 +1,7 @@
 "use client";
 
-import { useCheckStorage, useCreateCard, useGetLists } from "@/services/CardService";
-import { useState, useEffect } from 'react';
+import { useCheckStorage, useCreateCard, useGetLists } from "@/services/CardServiceHooks";
+import { useState, useEffect, FormEventHandler } from 'react';
 
 export default function NewForm()
 {
@@ -9,16 +9,20 @@ export default function NewForm()
     const createCard = useCreateCard();
     const checkStorage = useCheckStorage();
 
-    const [formState, setFormState] = useState({
+    const [formState, setFormState] = useState<{
+        title: string;
+        boardId: number;
+        [k: string]: any;
+    }>({
         title: '',
         boardId: 1
     });
 
     useEffect(() => checkStorage, []);
 
-    const getFormStateValue = (key) => formState[key]
+    const getFormStateValue = (key: string): any => formState[key]
 
-    const updateFormState = (key, val) => 
+    const updateFormState = (key: string, val: any) => 
     {
         const prevState = Object.assign({}, formState);
         
@@ -27,9 +31,9 @@ export default function NewForm()
         setFormState(prevState);
     }
 
-    const updateFormStateByEventHandler = (key) => (e) => updateFormState(key, e.target.value);
+    const updateFormStateByEventHandler = (key: string) => (e: any) => updateFormState(key, e.target.value);
 
-    const submitForm = (e) => 
+    const submitForm: FormEventHandler<HTMLFormElement> = (e) => 
     {
         e.preventDefault();
 

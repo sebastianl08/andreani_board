@@ -1,23 +1,26 @@
 "use client";
 
 import Card from "@/components/Card";
-import { useMoveCard, useGetCardsByBoard } from "@/services/CardService";
+import List from "@/model/List";
+import { useMoveCard, useGetCardsByBoard } from "@/services/CardServiceHooks";
+import { DragEventHandler } from 'react';
 
-export default function CardList({ title, id })
+export default function CardList({ title, id }: List)
 {
     const moveCard = useMoveCard();
     const getCardsByBoard = useGetCardsByBoard();
 
-    const onDragOver = (e) => {
+    const onDragOver: DragEventHandler<HTMLDivElement> = (e: any) => {
         e.preventDefault();
 
         const cardId = sessionStorage.getItem('currentCardId');
         const newBoard = id;
 
-        moveCard(cardId, newBoard);
+        if (cardId != null)
+            moveCard(Number(cardId), newBoard);
     }
 
-    const onDrop = (e) => {
+    const onDrop: DragEventHandler<HTMLDivElement> = (e: any) => {
         e.preventDefault();
     }
 

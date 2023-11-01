@@ -1,4 +1,4 @@
-import { useCheckStorage, useGetLists } from "@/services/CardService"
+import { useCheckStorage, useGetLists } from "@/services/CardServiceHooks"
 import { useEffect } from 'react';
 import CardList from "@/components/CardList";
 

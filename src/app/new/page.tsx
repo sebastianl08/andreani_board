@@ -1,6 +1,6 @@
 "use client";
 
-import { CardServiceProvider } from "@/services/CardService";
+import { CardServiceProvider } from "@/services/CardServiceProvider";
 import ToolBar from "./ToolBar";
 import NewForm from "@/components/NewForm";
 
